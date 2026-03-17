@@ -1,0 +1,12 @@
+/* Header */
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #333;
+}
+
+.task-summary {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
