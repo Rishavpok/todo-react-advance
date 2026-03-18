@@ -28,6 +28,18 @@ export default function Home() {
         return true;
     });
 
+    const sortedTasks = [...filteredTasks].sort((a, b) => {
+  if (sortBy === 'title') {
+    return a.title.localeCompare(b.title)
+  }
+
+  if (sortBy === 'date') {
+    return b.id - a.id // latest first
+  }
+
+  return 0
+})
+
     function addTask(title: string) {
         dispatch({
             type: 'add',
@@ -47,10 +59,10 @@ export default function Home() {
         <div className="home-container">
 
             <Header />
-            <FilterBar type={type} filterTask={filterTask} />
+            <FilterBar type={type} filterTask={filterTask} sortTask={sortTask} />
             <AddTaskForm add={addTask} />
             <TaskList
-                tasks={filteredTasks}
+                tasks={sortedTasks}
                 onDelete={deleteTask}
                 onToggle={onToggle}
             />
